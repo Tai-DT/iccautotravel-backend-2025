@@ -1,0 +1,1294 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ActivityEntity {
+  activity: String
+  coordinates: JSON
+  location: String
+  placeDetails: JSON
+  type: String
+}
+
+type BannerEntity {
+  buttonText: String
+  createdAt: Timestamp!
+  description: String
+  endDate: Timestamp
+  id: ID!
+  imageUrl: String
+  isActive: Boolean!
+  lang: String!
+  linkUrl: String
+  position: BannerPosition!
+  seoDescription: String
+  seoTitle: String
+  sortOrder: Int!
+  startDate: Timestamp
+  subtitle: String
+  title: String!
+  type: BannerType!
+  updatedAt: Timestamp!
+}
+
+input BannerFilterInput {
+  isActive: Boolean
+  lang: String
+  position: BannerPosition
+  search: String
+  type: BannerType
+}
+
+type BannerPaginationResponse {
+  data: [BannerEntity!]!
+  metadata: PaginationMetadata!
+}
+
+"""Các vị trí banner"""
+enum BannerPosition {
+  DETAIL_PAGE
+  HOMEPAGE
+  SEARCH_RESULTS
+  SIDEBAR
+}
+
+"""Các loại banner"""
+enum BannerType {
+  ANNOUNCEMENT
+  HERO
+  PROMO
+  SLIDER
+}
+
+type BookingEntity {
+  bookingCode: String!
+  createdAt: Timestamp!
+  endDate: Timestamp
+  id: ID!
+  metadata: JSON
+  notes: String
+  paymentStatus: String!
+  serviceIds: [String!]!
+  services: [ServiceEntity!]
+  startDate: Timestamp
+  status: String!
+  totalPrice: Float!
+  updatedAt: Timestamp!
+  user: UserEntity
+  userId: String!
+  vehicleId: String
+  version: Float!
+}
+
+input BookingFilterDto {
+  dateFrom: String
+  dateTo: String
+  endDate: String
+  paymentStatus: String
+  startDate: String
+  status: String
+  userId: String
+}
+
+input BookingOptionsDto {
+  driverIncluded: Boolean
+  englishSpeakingDriver: Boolean
+  vietnameseSpeakingDriver: Boolean
+}
+
+type BookingPaginationResponse {
+  data: [BookingEntity!]!
+  metadata: PaginationMetadata!
+}
+
+"""The status of a booking"""
+enum BookingStatus {
+  CANCELLED
+  COMPLETED
+  CONFIRMED
+  PENDING
+}
+
+type Certification {
+  certificateImageUrl: String
+  expiryDate: Timestamp
+  issuedBy: String!
+  issuedDate: Timestamp!
+  name: String!
+  verificationUrl: String
+}
+
+input ComboDetailsInput {
+  comboPrice: Float!
+  discountPercent: Float
+  items: String
+  title: String!
+  validity: String!
+}
+
+type CompanyMilestone {
+  description: String!
+  imageUrl: String
+  title: String!
+  year: Float!
+}
+
+type CompanyStats {
+  destinations: Float!
+  fleetSize: Float!
+  happyCustomers: Float!
+  professionalDrivers: Float!
+  toursCompleted: Float!
+  yearsInBusiness: Float!
+}
+
+type CompanyValue {
+  description: String!
+  iconUrl: String
+  title: String!
+}
+
+type ContactInfo {
+  address: String!
+  email: String!
+  emergencyPhone: String
+  fax: String
+  hotline: String
+  phone: String!
+  poBox: String
+}
+
+input CreateBannerInput {
+  buttonText: String
+  description: String
+  endDate: String
+  imageUrl: String!
+  isActive: Boolean = true
+  lang: String = "vi"
+  linkUrl: String
+  position: BannerPosition = HOMEPAGE
+  seoDescription: String
+  seoTitle: String
+  sortOrder: Float = 0
+  startDate: String
+  subtitle: String
+  title: String!
+  type: BannerType = HERO
+}
+
+input CreateBookingDto {
+  endDate: String!
+  notes: String
+  options: BookingOptionsDto
+  paymentMethod: String
+  serviceIds: [String!]!
+  startDate: String!
+  userId: String!
+  vehicleId: String
+}
+
+input CreateBusDto {
+  amenities: [String!]!
+  arrivalCity: String!
+  arrivalStation: String!
+  arrivalTime: String!
+  busCompany: String!
+  busType: String!
+  departureCity: String!
+  departureStation: String!
+  departureTime: String!
+  description: String
+  distance: Float!
+  driverName: String
+  driverPhone: String
+  dropoffPoints: [String!]!
+  duration: String!
+  features: [String!]!
+  isActive: Boolean! = true
+  name: String!
+  operatingDays: [String!]!
+  pickupPoints: [String!]!
+  price: Float!
+  route: String!
+  seatType: String!
+  totalSeats: Float!
+  vehicleLicensePlate: String
+  vehicleModel: String
+}
+
+input CreateComboServiceInput {
+  comboDetails: ComboDetailsInput
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  highlights: [String!] = []
+  imageUrl: String
+  metadata: JSON
+  name: String
+  price: Float
+  status: String = "ACTIVE"
+  tags: [String!] = []
+  type: ServiceType
+}
+
+input CreateDriverInput {
+  email: String
+  experienceYears: Float! = 0
+  fullName: String!
+  licenseExpiry: Timestamp!
+  licenseNumber: String!
+  notes: String
+  phone: String!
+  speaksEnglish: Boolean! = false
+  speaksVietnamese: Boolean! = true
+}
+
+input CreateFastTrackServiceInput {
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  fastTrackDetails: JSONObject
+  highlights: [String!] = []
+  imageUrl: String
+  metadata: JSON
+  name: String
+  price: Float
+  status: String = "ACTIVE"
+  tags: [String!] = []
+  type: ServiceType
+}
+
+input CreateFlightServiceInput {
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  flightDetails: JSONObject
+  highlights: [String!] = []
+  imageUrl: String
+  metadata: JSON
+  name: String
+  price: Float
+  status: String = "ACTIVE"
+  tags: [String!] = []
+  type: ServiceType
+}
+
+input CreateHotelServiceInput {
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  highlights: [String!] = []
+  hotelDetails: JSONObject
+  imageUrl: String
+  metadata: JSON
+  name: String
+  price: Float
+  status: String = "ACTIVE"
+  tags: [String!] = []
+  type: ServiceType
+}
+
+input CreateItineraryDto {
+  budget: Float
+  destination: String!
+  endDate: Timestamp
+  origin: String!
+  preferences: [String!]
+  startDate: Timestamp
+  travelType: String
+}
+
+input CreateLocationInput {
+  address: String
+  city: String
+  country: String
+  description: String
+  district: String
+  imageUrl: String
+  isActive: Boolean = true
+  isPopular: Boolean = false
+  latitude: Float
+  longitude: Float
+  name: String!
+  type: LocationType!
+  zipCode: String
+}
+
+input CreatePaymentDto {
+  amount: Float!
+  bookingId: String!
+  cancelUrl: String
+  currency: String = "VND"
+  customerEmail: String
+  customerName: String
+  customerPhone: String
+  description: String
+  metadata: JSON
+  provider: String!
+  returnUrl: String!
+}
+
+input CreateSEOConfigInput {
+  canonicalUrl: String
+  description: String!
+  isActive: Boolean = true
+  keywords: [String!]
+  lang: String = "vi"
+  ogDescription: String
+  ogImage: String
+  ogTitle: String
+  ogType: String = "website"
+  ogUrl: String
+  page: String!
+  robots: String = "index,follow"
+  title: String!
+  twitterCard: String = "summary"
+  twitterCreator: String
+  twitterDescription: String
+  twitterImage: String
+  twitterSite: String
+  twitterTitle: String
+}
+
+input CreateServiceInput {
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  highlights: [String!] = []
+  imageUrl: String
+  metadata: JSON
+  name: String!
+  price: Float
+  status: String = "ACTIVE"
+  tags: [String!] = []
+  type: ServiceType!
+}
+
+input CreateTourServiceInput {
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  highlights: [String!] = []
+  imageUrl: String
+  metadata: JSON
+  name: String
+  price: Float
+  status: String = "ACTIVE"
+  tags: [String!] = []
+  tourDetails: TourDetailsInput
+  type: ServiceType
+}
+
+input CreateTransferServiceInput {
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  highlights: [String!] = []
+  imageUrl: String
+  metadata: JSON
+  name: String
+  price: Float
+  status: String = "ACTIVE"
+  tags: [String!] = []
+  transferDetails: TransferDetailsInput
+  type: ServiceType
+}
+
+input CreateUserInput {
+  """Avatar URL"""
+  avatarUrl: String
+
+  """Driver biography"""
+  bio: String
+
+  """Company name"""
+  companyName: String
+
+  """Customer type"""
+  customerType: String
+
+  """Driver status"""
+  driverStatus: String
+
+  """User email"""
+  email: String!
+
+  """Driver experience in years"""
+  experience: Float
+
+  """User full name"""
+  fullName: String!
+
+  """Is user active"""
+  isActive: Boolean
+
+  """User language"""
+  language: String
+
+  """Languages spoken by driver"""
+  languages: [String!]
+
+  """Driver license class"""
+  licenseClass: String
+
+  """Driver license expiry date"""
+  licenseExpiry: Timestamp
+
+  """Driver license number"""
+  licenseNumber: String
+
+  """User password"""
+  password: String!
+
+  """Phone number"""
+  phone: String
+
+  """Driver rating"""
+  rating: Float
+
+  """User role ID"""
+  roleId: String
+
+  """Supabase user ID"""
+  supabaseId: String
+
+  """Tax code"""
+  taxCode: String
+}
+
+input CreateVehicleServiceInput {
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  highlights: [String!] = []
+  imageUrl: String
+  metadata: JSON
+  name: String
+  price: Float
+  status: String = "ACTIVE"
+  tags: [String!] = []
+  type: ServiceType
+  vehicleDetails: VehicleDetailsInput
+}
+
+input CreateVisaServiceInput {
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  highlights: [String!] = []
+  imageUrl: String
+  metadata: JSON
+  name: String
+  price: Float
+  status: String = "ACTIVE"
+  tags: [String!] = []
+  type: ServiceType
+  visaDetails: JSONObject
+}
+
+type DayEntity {
+  activities: [ActivityEntity!]
+  date: String
+  routes: JSON
+}
+
+"""Driver approval status"""
+enum DriverApprovalStatus {
+  APPROVED
+  PENDING
+  REJECTED
+  SUSPENDED
+}
+
+"""Status of a driver approval"""
+enum DriverStatus {
+  APPROVED
+  PENDING
+  REJECTED
+}
+
+type GeneratedItineraryEntity {
+  days: [DayEntity!]
+  recommendations: RecommendationsEntity
+  summary: String
+  title: String
+}
+
+type ItineraryEntity {
+  budget: Float
+  createdAt: Timestamp!
+  destination: String
+  endDate: Timestamp
+  id: ID!
+  legs: [String!]
+  notes: String
+  origin: String
+  preferences: [String!]
+  startDate: Timestamp
+  status: String!
+  title: String!
+  updatedAt: Timestamp!
+  userId: String!
+}
+
+type ItineraryResponseEntity {
+  generatedContent: GeneratedItineraryEntity!
+  itinerary: ItineraryEntity!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject
+
+"""Location entity"""
+type LocationEntity {
+  address: String
+  city: String
+  country: String
+  createdAt: Timestamp!
+  description: String
+  district: String
+  id: ID!
+  imageUrl: String
+  isActive: Boolean!
+  isPopular: Boolean!
+  latitude: Float
+  longitude: Float
+  name: String!
+  type: LocationType!
+  updatedAt: Timestamp!
+  zipCode: String
+}
+
+input LocationFilterDto {
+  city: String
+  country: String
+  isActive: Boolean
+  isPopular: Boolean
+  search: String
+  type: LocationType
+}
+
+type LocationPaginationResponse {
+  data: [LocationEntity!]!
+  metadata: PaginationMetadata!
+}
+
+"""Các loại địa điểm"""
+enum LocationType {
+  AIRPORT
+  ATTRACTION
+  CITY
+  DISTRICT
+  HOTEL
+  LANDMARK
+  OTHER
+  PROVINCE
+  RESTAURANT
+  WARD
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type LoginResponse {
+  accessToken: String!
+  refreshToken: String
+}
+
+type Mutation {
+  addDriverToVehicle(driverId: ID!, vehicleServiceDetailId: ID!): Boolean!
+  assignDriverToVehicle(driverId: ID!, vehicleId: ID!): ServiceEntity!
+  createBanner(input: CreateBannerInput!): BannerEntity!
+  createBooking(input: CreateBookingDto!): BookingEntity!
+  createBus(createBusInput: CreateBusDto!): ServiceEntity!
+  createComboService(createComboServiceInput: CreateComboServiceInput!): ServiceEntity!
+  createDriver(input: CreateDriverInput!): ServiceDriverEntity!
+  createFastTrackService(createFastTrackServiceInput: CreateFastTrackServiceInput!): ServiceEntity!
+  createFlightService(createFlightServiceInput: CreateFlightServiceInput!): ServiceEntity!
+  createHotelService(createHotelServiceInput: CreateHotelServiceInput!): ServiceEntity!
+  createLocation(input: CreateLocationInput!): LocationEntity!
+  createPayment(createPaymentInput: CreatePaymentDto!): PaymentEntity!
+  createSEOConfig(input: CreateSEOConfigInput!): SEOConfigEntity!
+  createService(input: CreateServiceInput!, lang: String! = "vi"): ServiceEntity!
+  createTourService(createTourServiceInput: CreateTourServiceInput!): ServiceEntity!
+  createTransferService(createTransferServiceInput: CreateTransferServiceInput!): ServiceEntity!
+  createUser(input: CreateUserInput!): UserEntity!
+  createVehicleService(createVehicleServiceInput: CreateVehicleServiceInput!): ServiceEntity!
+  createVisaService(createVisaServiceInput: CreateVisaServiceInput!): ServiceEntity!
+  deleteLocation(id: String!): LocationEntity!
+  generateAudioForAllServices(lang: String! = "vi", userId: String! = "system"): Boolean!
+  generateItinerary(input: CreateItineraryDto!): ItineraryResponseEntity!
+  generateServiceAudio(lang: String! = "vi", serviceId: String!, userId: String): Boolean!
+  login(input: LoginInput!): LoginResponse!
+  register(input: CreateUserInput!): UserEntity!
+  removeBanner(id: ID!): BannerEntity!
+  removeBooking(id: String!): BookingEntity!
+  removeBus(id: ID!): ServiceEntity!
+  removeComboService(id: ID!): ServiceEntity!
+  removeDriver(id: ID!): ServiceDriverEntity!
+  removeDriverFromVehicle(driverId: ID!, vehicleServiceDetailId: ID!): Boolean!
+  removeFastTrackService(id: ID!): ServiceEntity!
+  removeFlightService(id: ID!): ServiceEntity!
+  removeHotelService(id: ID!): ServiceEntity!
+  removeItinerary(id: String!): ItineraryEntity!
+  removeSEOConfig(id: ID!): SEOConfigEntity!
+  removeService(id: String!, lang: String! = "vi"): ServiceEntity!
+  removeTourService(id: ID!): ServiceEntity!
+  removeTransferService(id: ID!): ServiceEntity!
+  removeUser(id: String!): UserEntity!
+  removeVehicleService(id: ID!): ServiceEntity!
+  removeVisaService(id: ID!): ServiceEntity!
+  reorderBanners(ids: [String!]!): Boolean!
+  updateBanner(id: ID!, input: UpdateBannerInput!): BannerEntity!
+  updateBookingStatus(id: String!, status: BookingStatus!): BookingEntity!
+  updateBus(id: ID!, updateBusInput: UpdateBusDto!): ServiceEntity!
+  updateComboService(id: ID!, updateComboServiceInput: UpdateComboServiceInput!): ServiceEntity!
+  updateDriver(id: ID!, input: UpdateDriverInput!): ServiceDriverEntity!
+  updateFastTrackService(id: ID!, updateFastTrackServiceInput: UpdateFastTrackServiceInput!): ServiceEntity!
+  updateFlightService(id: ID!, updateFlightServiceInput: UpdateFlightServiceInput!): ServiceEntity!
+  updateHotelService(id: ID!, updateHotelServiceInput: UpdateHotelServiceInput!): ServiceEntity!
+  updateItinerary(id: String!, input: UpdateItineraryDto!): ItineraryEntity!
+  updateLocation(id: String!, input: UpdateLocationInput!): LocationEntity!
+  updateSEOConfig(id: ID!, input: UpdateSEOConfigInput!): SEOConfigEntity!
+  updateService(id: String!, input: UpdateServiceInput!, lang: String! = "vi"): ServiceEntity!
+  updateTourService(id: ID!, updateTourServiceInput: UpdateTourServiceInput!): ServiceEntity!
+  updateTransferService(id: ID!, updateTransferServiceInput: UpdateTransferServiceInput!): ServiceEntity!
+  updateUser(id: String!, input: UpdateUserDto!): UserEntity!
+  updateUserRole(id: String!, input: UpdateUserRoleDto!): UserEntity!
+  updateVehicleService(id: ID!, updateVehicleServiceInput: UpdateVehicleServiceInput!): ServiceEntity!
+  updateVisaService(id: ID!, updateVisaServiceInput: UpdateVisaServiceInput!): ServiceEntity!
+  upsertSEOConfig(input: CreateSEOConfigInput!, lang: String!, page: String!): SEOConfigEntity!
+}
+
+input PaginationDto {
+  limit: Int = 10
+  page: Int = 1
+}
+
+type PaginationMetadata {
+  limit: Int!
+  page: Int!
+  total: Int!
+}
+
+type PaymentEntity {
+  amount: Float!
+  bookingId: String!
+  createdAt: Timestamp!
+  currency: String!
+  id: ID!
+  metadata: JSON
+  paidAt: Timestamp
+  paymentMethod: String
+  provider: String
+  status: String!
+  txnRef: String
+  updatedAt: Timestamp!
+}
+
+type PaymentMethodDto {
+  description: String!
+  name: String!
+  provider: String!
+}
+
+type Query {
+  activeBanners(lang: String! = "vi", position: BannerPosition): [BannerEntity!]!
+  activeSEOConfigs(lang: String! = "vi", page: String): [SEOConfigEntity!]!
+  banner(id: ID!): BannerEntity
+  banners(filters: BannerFilterInput): [BannerEntity!]!
+  bannersByPosition(lang: String! = "vi", position: BannerPosition!): [BannerEntity!]!
+  bannersByType(lang: String! = "vi", type: BannerType!): [BannerEntity!]!
+  bannersPaginated(filters: BannerFilterInput, pagination: PaginationDto!): BannerPaginationResponse!
+  booking(id: String!): BookingEntity!
+  bookingsPaginated(filters: BookingFilterDto, pagination: PaginationDto!): BookingPaginationResponse!
+  bus(id: ID!): ServiceEntity!
+  buses: [ServiceEntity!]!
+  busesByRoute(destination: String!, origin: String!): [ServiceEntity!]!
+  combo(id: ID!): ServiceEntity!
+  combos: [ServiceEntity!]!
+  driver(id: ID!): ServiceDriverEntity!
+  drivers: [ServiceDriverEntity!]!
+  driversByLanguage(speaksEnglish: Boolean, speaksVietnamese: Boolean): [ServiceDriverEntity!]!
+  fastTrack(id: ID!): ServiceEntity!
+  fastTracks: [ServiceEntity!]!
+  flight(id: ID!): ServiceEntity!
+  flights: [ServiceEntity!]!
+  getServiceAudioUrl(serviceId: String!): String
+  hotel(id: ID!): ServiceEntity!
+  hotels: [ServiceEntity!]!
+  itineraries: [ItineraryEntity!]!
+  itinerary(id: String!): ItineraryEntity!
+  location(id: String!): LocationEntity
+  locations(filters: LocationFilterDto, pagination: PaginationDto!): LocationPaginationResponse!
+  locationsByType(type: LocationType!): [LocationEntity!]!
+  me: UserEntity
+  payment(id: String!): PaymentEntity!
+  paymentMethods: [PaymentMethodDto!]!
+  paymentsByBooking(bookingId: String!): [PaymentEntity!]!
+  popularLocations(limit: Float = 10): [LocationEntity!]!
+  seoConfig(id: ID!): SEOConfigEntity
+  seoConfigByPage(lang: String! = "vi", page: String!): SEOConfigEntity
+  seoConfigs(filters: SEOConfigFilterInput): [SEOConfigEntity!]!
+  seoConfigsPaginated(filters: SEOConfigFilterInput, pagination: PaginationDto!): SEOConfigPaginationResponse!
+  service(id: String!, lang: String! = "vi"): ServiceEntity
+  services(filters: ServiceFilterInput, lang: String! = "vi", pagination: PaginationDto!): ServicePaginationResponse!
+  tour(id: ID!): ServiceEntity!
+  tours: [ServiceEntity!]!
+  transfer(id: ID!): ServiceEntity!
+  transfers: [ServiceEntity!]!
+  user(id: String!): UserEntity
+  users(filters: UserFilterDto, pagination: PaginationDto!): UserPaginationResponse!
+  vehicle(id: ID!): ServiceEntity!
+  vehicleDrivers(vehicleId: ID!): [ServiceDriverEntity!]!
+  vehicles: [ServiceEntity!]!
+  visa(id: ID!): ServiceEntity!
+  visas: [ServiceEntity!]!
+}
+
+type RecommendationsEntity {
+  accommodations: [String!]
+  attractions: [String!]
+  restaurants: [String!]
+}
+
+type SEOConfigEntity {
+  canonicalUrl: String
+  createdAt: Timestamp!
+  description: String
+  id: ID!
+  isActive: Boolean!
+  keywords: String
+  lang: String!
+  ogDescription: String
+  ogImage: String
+  ogTitle: String
+  ogType: String!
+  ogUrl: String
+  page: String!
+  robots: String!
+  title: String!
+  twitterCard: String!
+  twitterCreator: String
+  twitterDescription: String
+  twitterImage: String
+  twitterSite: String
+  twitterTitle: String
+  updatedAt: Timestamp!
+}
+
+input SEOConfigFilterInput {
+  isActive: Boolean
+  lang: String
+  page: String
+  search: String
+}
+
+type SEOConfigPaginationResponse {
+  data: [SEOConfigEntity!]!
+  metadata: PaginationMetadata!
+}
+
+type ServiceDriverEntity {
+  bio: String
+  createdAt: Timestamp!
+  experience: Int!
+  id: ID!
+  isActive: Boolean!
+  languages: [String!]!
+  licenseClass: String!
+  licenseExpiry: Timestamp!
+  licenseNumber: String!
+  rating: Float
+  status: DriverStatus!
+  updatedAt: Timestamp!
+  userId: String!
+}
+
+type ServiceEntity {
+  allowPayLater: Boolean!
+  audioFileFemaleId: String
+  audioFileMaleId: String
+  createdAt: Timestamp!
+  currency: String
+  currentLanguage: String
+  description: String
+  duration: Float
+  durationUnit: String
+  hasAudio: Boolean!
+  hasSEO: Boolean!
+  highlights: [String!]
+  id: ID!
+  imageUrl: String
+  isActive: Boolean!
+  isDeleted: Boolean!
+  isTranslated: Boolean!
+  localizedData: JSON
+  localizedTypeName: String
+  metadata: JSON
+  name: String!
+  price: Float
+  seoData: JSON
+  seoUrl: String
+  status: String
+  tags: [String!]
+  type: ServiceType!
+  updatedAt: Timestamp!
+}
+
+input ServiceFilterInput {
+  isActive: Boolean
+  isDeleted: Boolean = false
+  name: String
+  type: ServiceType
+}
+
+type ServicePaginationResponse {
+  data: [ServiceEntity!]!
+  metadata: PaginationMetadata!
+}
+
+"""The type of service (FLIGHT, VEHICLE, HOTEL, etc.)"""
+enum ServiceType {
+  BUS
+  COMBO
+  FAST_TRACK
+  FLIGHT
+  HOTEL
+  INSURANCE
+  TOUR
+  TRANSFER
+  VEHICLE
+  VEHICLE_RENTAL
+  VEHICLE_TICKET
+  VISA
+}
+
+type SocialMedia {
+  facebook: String
+  instagram: String
+  linkedIn: String
+  tiktok: String
+  youtube: String
+  zalo: String
+}
+
+type TeamMember {
+  bio: String
+  email: String
+  linkedIn: String
+  name: String!
+  photoUrl: String
+  position: String!
+}
+
+"""
+`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
+"""
+scalar Timestamp
+
+input TourDetailsInput {
+  adultPrice: Float!
+  childPrice: Float
+  departureDates: [String!]!
+  description: String
+  durationInDays: Int
+  itinerary: String
+  maxPax: Int
+  minPax: Int
+  seatsAvailable: Int
+  seatsLeft: Int!
+  title: String!
+  tourCode: String!
+}
+
+input TransferDetailsInput {
+  basePrice: Float
+  description: String
+  distanceKm: Float!
+  fromLocation: String
+  maxPassengers: Int
+  price: Float!
+  route: String!
+  toLocation: String
+  vehicleType: String!
+  waitTime: Int
+}
+
+input UpdateBannerInput {
+  buttonText: String
+  description: String
+  endDate: String
+  imageUrl: String
+  isActive: Boolean = true
+  lang: String = "vi"
+  linkUrl: String
+  position: BannerPosition = HOMEPAGE
+  seoDescription: String
+  seoTitle: String
+  sortOrder: Float = 0
+  startDate: String
+  subtitle: String
+  title: String
+  type: BannerType = HERO
+}
+
+input UpdateBusDto {
+  amenities: [String!]
+  arrivalCity: String
+  arrivalStation: String
+  arrivalTime: String
+  busCompany: String
+  busType: String
+  departureCity: String
+  departureStation: String
+  departureTime: String
+  description: String
+  distance: Float
+  driverName: String
+  driverPhone: String
+  dropoffPoints: [String!]
+  duration: String
+  features: [String!]
+  isActive: Boolean = true
+  name: String
+  operatingDays: [String!]
+  pickupPoints: [String!]
+  price: Float
+  route: String
+  seatType: String
+  totalSeats: Float
+  vehicleLicensePlate: String
+  vehicleModel: String
+}
+
+input UpdateComboServiceInput {
+  comboDetails: ComboDetailsInput
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  highlights: [String!] = []
+  id: ID!
+  imageUrl: String
+  metadata: JSON
+  name: String
+  price: Float
+  status: String = "ACTIVE"
+  tags: [String!] = []
+  type: ServiceType
+}
+
+input UpdateDriverInput {
+  email: String
+  experienceYears: Float = 0
+  fullName: String
+  licenseExpiry: Timestamp
+  licenseNumber: String
+  notes: String
+  phone: String
+  speaksEnglish: Boolean = false
+  speaksVietnamese: Boolean = true
+}
+
+input UpdateFastTrackServiceInput {
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  fastTrackDetails: JSONObject
+  highlights: [String!] = []
+  id: ID!
+  imageUrl: String
+  metadata: JSON
+  name: String
+  price: Float
+  status: String = "ACTIVE"
+  tags: [String!] = []
+  type: ServiceType
+}
+
+input UpdateFlightServiceInput {
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  flightDetails: JSONObject
+  highlights: [String!] = []
+  id: ID!
+  imageUrl: String
+  metadata: JSON
+  name: String
+  price: Float
+  status: String = "ACTIVE"
+  tags: [String!] = []
+  type: ServiceType
+}
+
+input UpdateHotelServiceInput {
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  highlights: [String!] = []
+  hotelDetails: JSONObject
+  id: ID!
+  imageUrl: String
+  metadata: JSON
+  name: String
+  price: Float
+  status: String = "ACTIVE"
+  tags: [String!] = []
+  type: ServiceType
+}
+
+input UpdateItineraryDto {
+  budget: Float
+  destination: String
+  endDate: Timestamp
+  origin: String
+  preferences: [String!]
+  startDate: Timestamp
+  travelType: String
+}
+
+input UpdateLocationInput {
+  address: String
+  city: String
+  country: String
+  description: String
+  district: String
+  imageUrl: String
+  isActive: Boolean
+  isPopular: Boolean
+  latitude: Float
+  longitude: Float
+  name: String
+  type: LocationType
+  zipCode: String
+}
+
+input UpdateSEOConfigInput {
+  canonicalUrl: String
+  description: String
+  isActive: Boolean = true
+  keywords: [String!]
+  lang: String = "vi"
+  ogDescription: String
+  ogImage: String
+  ogTitle: String
+  ogType: String = "website"
+  ogUrl: String
+  page: String
+  robots: String = "index,follow"
+  title: String
+  twitterCard: String = "summary"
+  twitterCreator: String
+  twitterDescription: String
+  twitterImage: String
+  twitterSite: String
+  twitterTitle: String
+}
+
+input UpdateServiceInput {
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  highlights: [String!]
+  imageUrl: String
+  isActive: Boolean
+  isDeleted: Boolean
+  metadata: JSON
+  name: String
+  price: Float
+  status: String
+  tags: [String!]
+  type: ServiceType
+}
+
+input UpdateTourServiceInput {
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  highlights: [String!] = []
+  id: ID!
+  imageUrl: String
+  metadata: JSON
+  name: String
+  price: Float
+  status: String = "ACTIVE"
+  tags: [String!] = []
+  tourDetails: TourDetailsInput
+  type: ServiceType
+}
+
+input UpdateTransferServiceInput {
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  highlights: [String!] = []
+  id: ID!
+  imageUrl: String
+  metadata: JSON
+  name: String
+  price: Float
+  status: String = "ACTIVE"
+  tags: [String!] = []
+  transferDetails: TransferDetailsInput
+  type: ServiceType
+}
+
+input UpdateUserDto {
+  avatarUrl: String
+  bio: String
+  companyName: String
+  customerType: String
+  driverStatus: DriverApprovalStatus
+  email: String
+  experience: Float
+  fullName: String
+  isActive: Boolean
+  language: String
+  languages: [String!]
+  licenseClass: String
+  licenseExpiry: Timestamp
+  licenseNumber: String
+  password: String
+  phone: String
+  rating: Float
+  roleId: String
+  supabaseId: String
+  taxCode: String
+}
+
+input UpdateUserRoleDto {
+  """User role name (ADMIN, STAFF, etc.)"""
+  role: String!
+}
+
+input UpdateVehicleServiceInput {
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  highlights: [String!] = []
+  id: ID!
+  imageUrl: String
+  metadata: JSON
+  name: String
+  price: Float
+  status: String = "ACTIVE"
+  tags: [String!] = []
+  type: ServiceType
+  vehicleDetails: VehicleDetailsInput
+}
+
+input UpdateVisaServiceInput {
+  currency: String = "VND"
+  description: String
+  duration: Float
+  durationUnit: String = "HOUR"
+  highlights: [String!] = []
+  id: ID!
+  imageUrl: String
+  metadata: JSON
+  name: String
+  price: Float
+  status: String = "ACTIVE"
+  tags: [String!] = []
+  type: ServiceType
+  visaDetails: JSONObject
+}
+
+type UserEntity {
+  avatarUrl: String
+  bio: String
+  companyName: String
+  createdAt: Timestamp!
+  customerType: String
+  driverStatus: DriverApprovalStatus
+  email: String!
+  experience: Float
+  fullName: String!
+  id: String!
+  isActive: Boolean!
+  language: String!
+  languages: [String!]!
+  licenseClass: String
+  licenseExpiry: Timestamp
+  licenseNumber: String
+  password: String!
+  phone: String
+  rating: Float
+  role: String
+  supabaseId: String
+  taxCode: String
+  updatedAt: Timestamp!
+}
+
+input UserFilterDto {
+  customerType: String
+  email: String
+  fullName: String
+  isActive: Boolean
+  role: String
+}
+
+type UserPaginationResponse {
+  data: [UserEntity!]!
+  metadata: PaginationMetadata!
+}
+
+input VehicleDetailsInput {
+  brand: String!
+  description: String
+  driverIds: [String!]
+  driverIncluded: Boolean
+  dropoffLatitude: Float
+  dropoffLocation: String
+  dropoffLongitude: Float
+  englishSpeakingDriver: Boolean
+  extras: [String!]!
+  fuelType: String!
+  licensePlate: String!
+  model: String!
+  pickupLatitude: Float
+  pickupLocation: String
+  pickupLongitude: Float
+  pricePerDay: Float!
+  seats: Int!
+  type: String!
+  vietnameseSpeakingDriver: Boolean
+}
+
+type WorkingHours {
+  friday: String
+  holiday: String
+  monday: String
+  saturday: String
+  sunday: String
+  thursday: String
+  tuesday: String
+  wednesday: String
+}

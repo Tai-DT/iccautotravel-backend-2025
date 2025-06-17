@@ -1,0 +1,49 @@
+{
+  "common": {
+    "services_list_success": "Service list retrieved successfully",
+    "service_details_success": "Service details retrieved successfully",
+    "hello": "Hello",
+    "welcome": "Welcome to ICCautoTravel",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "view": "View",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  },
+  "services": {
+    "service_types": {
+      "car_rental": "Car rental",
+      "hotel_booking": "Hotel booking",
+      "flight_booking": "Flight booking",
+      "tour_package": "Tour package",
+      "visa_service": "Visa service",
+      "transfer": "Airport transfer"
+    },
+    "vehicle": {
+      "title": "Vehicle Services",
+      "car": "Car",
+      "van": "Van",
+      "bus": "Bus",
+      "luxury": "Luxury car",
+      "with_driver": "With driver",
+      "self_drive": "Self drive"
+    }
+  },
+  "blog": {
+    "list_success": "Blog posts retrieved successfully",
+    "featured_success": "Featured blog post retrieved successfully",
+    "categories": {
+      "travel": "Travel",
+      "food": "Food & Cuisine",
+      "culture": "Culture",
+      "tips": "Travel Tips"
+    }
+  }
+}

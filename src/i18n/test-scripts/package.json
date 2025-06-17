@@ -1,0 +1,20 @@
+{
+  "name": "i18n-test-scripts",
+  "version": "1.0.0",
+  "description": "Test scripts for ICCAutoTravel i18n API",
+  "scripts": {
+    "test:rest": "node test-rest-api.js",
+    "test:graphql": "node test-graphql-api.js",
+    "test:performance": "node test-performance.js",
+    "test:all": "npm run test:rest && npm run test:graphql && npm run test:performance",
+    "test:quick": "npm run test:rest && npm run test:graphql",
+    "install": "npm install"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "graphql-request": "^6.1.0",
+    "colors": "^1.4.0"
+  },
+  "devDependencies": {
+  }
+}

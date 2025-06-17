@@ -1,0 +1,38 @@
+{
+  "validation": {
+    "isEmail": "Email must be a valid email address",
+    "isNotEmpty": "Field cannot be empty",
+    "minLength": "Field must be at least {{min}} characters long",
+    "maxLength": "Field must be at most {{max}} characters long",
+    "isString": "Field must be a string",
+    "isNumber": "Field must be a number",
+    "isDate": "Field must be a valid date",
+    "isOptional": "Field is optional",
+    "isEnum": "Field must be one of: {{values}}",
+    "isUUID": "Field must be a valid UUID",
+    "isPhoneNumber": "Field must be a valid phone number",
+    "isStrongPassword": "Password must contain at least 8 characters, including uppercase, lowercase, number and special character"
+  },
+  "errors": {
+    "unauthorized": "Unauthorized access",
+    "forbidden": "Access forbidden",
+    "not_found": "Resource not found",
+    "bad_request": "Bad request",
+    "internal_server_error": "Internal server error",
+    "validation_failed": "Validation failed",
+    "duplicate_entry": "Duplicate entry",
+    "invalid_credentials": "Invalid credentials",
+    "token_expired": "Token has expired",
+    "insufficient_permissions": "Insufficient permissions"
+  },
+  "messages": {
+    "created_successfully": "Created successfully",
+    "updated_successfully": "Updated successfully",
+    "deleted_successfully": "Deleted successfully",
+    "operation_successful": "Operation completed successfully",
+    "email_sent": "Email sent successfully",
+    "password_reset": "Password reset successfully",
+    "login_successful": "Login successful",
+    "logout_successful": "Logout successful"
+  }
+}

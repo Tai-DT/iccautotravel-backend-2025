@@ -1,0 +1,45 @@
+{
+  "app": {
+    "name": "ICC Auto Travel",
+    "welcome": "Chào mừng đến với ICC Auto Travel"
+  },
+  "common": {
+    "hello": "Xin chào",
+    "success": "Thành công",
+    "error": "Lỗi",
+    "loading": "Đang tải...",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "edit": "Sửa",
+    "create": "Tạo mới",
+    "search": "Tìm kiếm",
+    "filter": "Lọc"
+  },
+  "services": {
+    "tour": "Tour du lịch",
+    "transfer": "Dịch vụ đưa đón",
+    "vehicle": "Thuê xe",
+    "flight": "Vé máy bay",
+    "hotel": "Khách sạn",
+    "bus": "Vé xe khách",
+    "visa": "Visa",
+    "insurance": "Bảo hiểm"
+  },
+  "chatbot": {
+    "greeting": "Xin chào! Tôi là trợ lý AI của ICC Auto Travel. Tôi có thể giúp bạn:",
+    "services_intro": "🚗 Dịch vụ đưa đón và thuê xe\n🏖️ Tour du lịch trọn gói\n✈️ Vé máy bay giá tốt\n🏨 Đặt phòng khách sạn",
+    "ask_service": "Bạn muốn tìm hiểu dịch vụ nào?",
+    "tour_info": "Chúng tôi có nhiều tour du lịch hấp dẫn:",
+    "transfer_info": "Dịch vụ đưa đón sân bay và trong thành phố:",
+    "vehicle_info": "Cho thuê xe các loại:",
+    "contact_support": "Gọi tư vấn viên",
+    "book_now": "Đặt ngay",
+    "get_quote": "Xin báo giá"
+  },
+  "ai": {
+    "content_generated": "Nội dung đã được tạo thành công",
+    "generating": "Đang tạo nội dung...",
+    "error": "Có lỗi xảy ra khi tạo nội dung"
+  }
+} 

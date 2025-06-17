@@ -1,0 +1,38 @@
+{
+  "validation": {
+    "isEmail": "Email phải là địa chỉ email hợp lệ",
+    "isNotEmpty": "Trường này không được để trống",
+    "minLength": "Trường này phải có ít nhất {{min}} ký tự",
+    "maxLength": "Trường này không được vượt quá {{max}} ký tự",
+    "isString": "Trường này phải là chuỗi ký tự",
+    "isNumber": "Trường này phải là số",
+    "isDate": "Trường này phải là ngày hợp lệ",
+    "isOptional": "Trường này là tùy chọn",
+    "isEnum": "Trường này phải là một trong: {{values}}",
+    "isUUID": "Trường này phải là UUID hợp lệ",
+    "isPhoneNumber": "Trường này phải là số điện thoại hợp lệ",
+    "isStrongPassword": "Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt"
+  },
+  "errors": {
+    "unauthorized": "Truy cập không được phép",
+    "forbidden": "Bị cấm truy cập",
+    "not_found": "Không tìm thấy tài nguyên",
+    "bad_request": "Yêu cầu không hợp lệ",
+    "internal_server_error": "Lỗi máy chủ nội bộ",
+    "validation_failed": "Xác thực không thành công",
+    "duplicate_entry": "Bản ghi trùng lặp",
+    "invalid_credentials": "Thông tin đăng nhập không hợp lệ",
+    "token_expired": "Token đã hết hạn",
+    "insufficient_permissions": "Quyền hạn không đủ"
+  },
+  "messages": {
+    "created_successfully": "Tạo thành công",
+    "updated_successfully": "Cập nhật thành công",
+    "deleted_successfully": "Xóa thành công",
+    "operation_successful": "Thao tác hoàn thành thành công",
+    "email_sent": "Gửi email thành công",
+    "password_reset": "Đặt lại mật khẩu thành công",
+    "login_successful": "Đăng nhập thành công",
+    "logout_successful": "Đăng xuất thành công"
+  }
+}

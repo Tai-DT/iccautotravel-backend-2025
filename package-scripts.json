@@ -1,0 +1,8 @@
+{
+  "start:prod:optimized": "NODE_OPTIONS=\"--max-old-space-size=2048 --optimize-for-size\" node dist/src/main",
+  "start:dev:optimized": "NODE_OPTIONS=\"--max-old-space-size=1024\" nest start --watch",
+  "build:optimized": "NODE_OPTIONS=\"--max-old-space-size=4096\" npm run build",
+  "test:performance": "node scripts/performance-test.js",
+  "monitor:memory": "node scripts/memory-monitor.js",
+  "cache:warm": "node scripts/cache-warmer.js"
+}

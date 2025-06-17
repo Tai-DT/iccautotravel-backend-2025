@@ -1,0 +1,49 @@
+{
+  "common": {
+    "services_list_success": "서비스 목록이 성공적으로 검색되었습니다",
+    "service_details_success": "서비스 세부 정보가 성공적으로 검색되었습니다",
+    "hello": "안녕하세요",
+    "welcome": "ICCautoTravel에 오신 것을 환영합니다",
+    "save": "저장",
+    "cancel": "취소",
+    "submit": "제출",
+    "view": "보기",
+    "edit": "편집",
+    "delete": "삭제",
+    "search": "검색",
+    "filter": "필터",
+    "sort": "정렬",
+    "loading": "로딩 중...",
+    "error": "오류",
+    "success": "성공"
+  },
+  "services": {
+    "service_types": {
+      "car_rental": "렌터카",
+      "hotel_booking": "호텔 예약",
+      "flight_booking": "항공권 예약",
+      "tour_package": "투어 패키지",
+      "visa_service": "비자 서비스",
+      "transfer": "공항 픽업"
+    },
+    "vehicle": {
+      "title": "차량 서비스",
+      "car": "자동차",
+      "van": "밴",
+      "bus": "버스",
+      "luxury": "고급 차량",
+      "with_driver": "운전기사 포함",
+      "self_drive": "자가 운전"
+    }
+  },
+  "blog": {
+    "list_success": "블로그 게시물이 성공적으로 검색되었습니다",
+    "featured_success": "주요 블로그 게시물이 성공적으로 검색되었습니다",
+    "categories": {
+      "travel": "여행",
+      "food": "음식 및 요리",
+      "culture": "문화",
+      "tips": "여행 팁"
+    }
+  }
+}

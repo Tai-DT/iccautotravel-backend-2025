@@ -1,0 +1,151 @@
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { PrismaService } from '../../prisma/prisma.service';
+import { CreateDriverInput } from './dto/create-driver.input';
+import { UpdateDriverInput } from './dto/update-driver.input';
+import { DriverEntity } from '../entities/driver.entity';
+import { v4 as uuidv4 } from 'uuid';
+
+@Injectable()
+export class DriverService {
+  constructor(private prisma: PrismaService) {}
+
+  async create(createDriverInput: CreateDriverInput): Promise<DriverEntity> {
+    const driver = await (this.prisma as any).driver.create({
+      data: {
+        id: uuidv4(),
+        ...createDriverInput,
+      },
+    });
+
+    return DriverEntity.fromPrisma(driver);
+  }
+
+  async findAll(): Promise<DriverEntity[]> {
+    const drivers = await (this.prisma as any).driver.findMany({
+      where: {
+        isActive: true,
+      },
+    });
+
+    return drivers.map((driver: any) => DriverEntity.fromPrisma(driver));
+  }
+
+  async findOne(id: string): Promise<DriverEntity> {
+    const driver = await (this.prisma as any).driver.findUnique({
+      where: { id },
+    });
+
+    if (!driver) {
+      throw new NotFoundException(`Driver with ID "${id}" not found`);
+    }
+
+    return DriverEntity.fromPrisma(driver);
+  }
+
+  async update(id: string, updateDriverInput: UpdateDriverInput): Promise<DriverEntity> {
+    // Check if driver exists
+    await this.findOne(id);
+
+    const updatedDriver = await (this.prisma as any).driver.update({
+      where: { id },
+      data: updateDriverInput,
+    });
+
+    return DriverEntity.fromPrisma(updatedDriver);
+  }
+
+  async remove(id: string): Promise<DriverEntity> {
+    // Check if driver exists
+    await this.findOne(id);
+
+    // Soft delete by setting isActive to false
+    const deletedDriver = await (this.prisma as any).driver.update({
+      where: { id },
+      data: { isActive: false },
+    });
+
+    return DriverEntity.fromPrisma(deletedDriver);
+  }
+
+  async findByLanguage(speaksEnglish?: boolean, speaksVietnamese?: boolean): Promise<DriverEntity[]> {
+    const filters: any = { isActive: true };
+    
+    if (speaksEnglish !== undefined) {
+      filters.speaksEnglish = speaksEnglish;
+    }
+    
+    if (speaksVietnamese !== undefined) {
+      filters.speaksVietnamese = speaksVietnamese;
+    }
+    
+    const drivers = await (this.prisma as any).driver.findMany({
+      where: filters,
+    });
+    
+    return drivers.map((driver: any) => DriverEntity.fromPrisma(driver));
+  }
+
+  async addDriverToVehicle(driverId: string, vehicleServiceDetailId: string): Promise<DriverEntity> {
+    // Check if driver exists
+    const driver = await this.findOne(driverId);
+    
+    // Check if vehicle service detail exists
+    const vehicleServiceDetail = await this.prisma.vehicleServiceDetail.findUnique({
+      where: { id: vehicleServiceDetailId },
+    });
+    
+    if (!vehicleServiceDetail) {
+      throw new NotFoundException(`Vehicle service detail with ID "${vehicleServiceDetailId}" not found`);
+    }
+    
+    // Add driver to vehicle
+    try {
+      await this.prisma.vehicleServiceDetail.update({
+        where: { id: vehicleServiceDetailId },
+        data: {
+          drivers: {
+            connect: { id: driverId },
+          },
+        },
+      });
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error(`Failed to assign driver ${driverId} to vehicle: ${errorMessage}`);
+      throw error;
+    }
+    
+    return driver;
+  }
+
+  async removeDriverFromVehicle(driverId: string, vehicleServiceDetailId: string): Promise<DriverEntity> {
+    // Check if driver exists
+    const driver = await this.findOne(driverId);
+    
+    // Check if vehicle service detail exists
+    const vehicleServiceDetail = await this.prisma.vehicleServiceDetail.findUnique({
+      where: { id: vehicleServiceDetailId },
+    });
+    
+    if (!vehicleServiceDetail) {
+      throw new NotFoundException(`Vehicle service detail with ID "${vehicleServiceDetailId}" not found`);
+    }
+    
+    // Remove driver from vehicle
+    try {
+      await this.prisma.vehicleServiceDetail.update({
+        where: { id: vehicleServiceDetailId },
+        data: {
+          drivers: {
+            disconnect: { id: driverId },
+          },
+        },
+      });
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error(`Failed to remove driver ${driverId} from vehicle: ${errorMessage}`);
+      throw error;
+    }
+    
+    return driver;
+  }
+}

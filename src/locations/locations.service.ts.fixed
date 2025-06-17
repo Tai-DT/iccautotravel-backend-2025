@@ -1,0 +1,119 @@
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
+import { CreateLocationInput } from './dto/create-location.input';
+import { UpdateLocationInput } from './dto/update-location.input';
+import { LocationFilterDto } from './dto/location-filter.dto';
+import { PaginationDto } from '../common/dto/pagination.dto';
+import { LocationEntity, LocationType } from './entities/location.entity';
+
+@Injectable()
+export class LocationsService {
+  constructor(private readonly prisma: PrismaService) {}
+
+  async create(createLocationInput: CreateLocationInput): Promise<LocationEntity> {
+    return (this.prisma as any).location.create({
+      data: createLocationInput,
+    });
+  }
+
+  async findAllWithPagination(
+    paginationDto: PaginationDto,
+    filters?: LocationFilterDto,
+  ) {
+    const { page = 1, limit = 10 } = paginationDto;
+    const skip = (page - 1) * limit;
+
+    const where: any = {};
+
+    if (filters) {
+      if (filters.search) {
+        where.OR = [
+          { name: { contains: filters.search, mode: 'insensitive' } },
+          { address: { contains: filters.search, mode: 'insensitive' } },
+          { city: { contains: filters.search, mode: 'insensitive' } },
+        ];
+      }
+
+      if (filters.type) {
+        where.type = filters.type;
+      }
+
+      if (filters.country) {
+        where.country = filters.country;
+      }
+
+      if (filters.city) {
+        where.city = filters.city;
+      }
+
+      if (filters.isActive !== undefined) {
+        where.isActive = filters.isActive;
+      }
+
+      if (filters.isPopular !== undefined) {
+        where.isPopular = filters.isPopular;
+      }
+    }
+
+    const [data, total] = await Promise.all([
+      (this.prisma as any).location.findMany({
+        where,
+        skip,
+        take: limit,
+        orderBy: { name: 'asc' },
+      }),
+      (this.prisma as any).location.count({ where }),
+    ]);
+
+    return {
+      data,
+      total,
+      page,
+      limit,
+    };
+  }
+
+  async findOne(id: string): Promise<LocationEntity> {
+    const location = await (this.prisma as any).location.findUnique({
+      where: { id },
+    });
+
+    if (!location) {
+      throw new NotFoundException(`Location with ID ${id} not found`);
+    }
+
+    return location;
+  }
+
+  async update(id: string, updateLocationInput: UpdateLocationInput): Promise<LocationEntity> {
+    await this.findOne(id);
+
+    return (this.prisma as any).location.update({
+      where: { id },
+      data: updateLocationInput,
+    });
+  }
+
+  async remove(id: string): Promise<LocationEntity> {
+    await this.findOne(id);
+
+    return (this.prisma as any).location.delete({
+      where: { id },
+    });
+  }
+
+  async findByType(type: LocationType): Promise<LocationEntity[]> {
+    return (this.prisma as any).location.findMany({
+      where: { type, isActive: true },
+      orderBy: { name: 'asc' },
+    });
+  }
+
+  async findPopular(limit = 10): Promise<LocationEntity[]> {
+    return (this.prisma as any).location.findMany({
+      where: { isPopular: true, isActive: true },
+      take: limit,
+      orderBy: { name: 'asc' },
+    });
+  }
+}

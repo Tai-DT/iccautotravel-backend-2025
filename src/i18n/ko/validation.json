@@ -1,0 +1,38 @@
+{
+  "validation": {
+    "isEmail": "이메일은 유효한 이메일 주소여야 합니다",
+    "isNotEmpty": "필드는 비워둘 수 없습니다",
+    "minLength": "필드는 최소 {{min}}자 이상이어야 합니다",
+    "maxLength": "필드는 최대 {{max}}자 이하여야 합니다",
+    "isString": "필드는 문자열이어야 합니다",
+    "isNumber": "필드는 숫자여야 합니다",
+    "isDate": "필드는 유효한 날짜여야 합니다",
+    "isOptional": "필드는 선택사항입니다",
+    "isEnum": "필드는 다음 중 하나여야 합니다: {{values}}",
+    "isUUID": "필드는 유효한 UUID여야 합니다",
+    "isPhoneNumber": "필드는 유효한 전화번호여야 합니다",
+    "isStrongPassword": "비밀번호는 최소 8자 이상이며, 대문자, 소문자, 숫자 및 특수문자를 포함해야 합니다"
+  },
+  "errors": {
+    "unauthorized": "권한이 없는 접근",
+    "forbidden": "접근 금지",
+    "not_found": "리소스를 찾을 수 없음",
+    "bad_request": "잘못된 요청",
+    "internal_server_error": "내부 서버 오류",
+    "validation_failed": "유효성 검사 실패",
+    "duplicate_entry": "중복 항목",
+    "invalid_credentials": "잘못된 자격 증명",
+    "token_expired": "토큰이 만료됨",
+    "insufficient_permissions": "권한 부족"
+  },
+  "messages": {
+    "created_successfully": "성공적으로 생성됨",
+    "updated_successfully": "성공적으로 업데이트됨",
+    "deleted_successfully": "성공적으로 삭제됨",
+    "operation_successful": "작업이 성공적으로 완료됨",
+    "email_sent": "이메일 전송 성공",
+    "password_reset": "비밀번호 재설정 성공",
+    "login_successful": "로그인 성공",
+    "logout_successful": "로그아웃 성공"
+  }
+}

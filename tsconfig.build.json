@@ -1,0 +1,4 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": ["test", "dist", "**/*.spec.ts", "src/**/*.spec.ts", "src/payments/payment.controller.spec.fixed.ts"]
+}

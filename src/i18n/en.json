@@ -1,0 +1,45 @@
+{
+  "app": {
+    "name": "ICC Auto Travel",
+    "welcome": "Welcome to ICC Auto Travel"
+  },
+  "common": {
+    "hello": "Hello",
+    "success": "Success",
+    "error": "Error",
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "filter": "Filter"
+  },
+  "services": {
+    "tour": "Tour",
+    "transfer": "Transfer Service",
+    "vehicle": "Vehicle Rental",
+    "flight": "Flight Ticket",
+    "hotel": "Hotel",
+    "bus": "Bus Ticket",
+    "visa": "Visa",
+    "insurance": "Insurance"
+  },
+  "chatbot": {
+    "greeting": "Hello! I'm ICC Auto Travel's AI assistant. I can help you with:",
+    "services_intro": "🚗 Transfer and vehicle rental services\n🏖️ Complete tour packages\n✈️ Affordable flight tickets\n🏨 Hotel bookings",
+    "ask_service": "Which service would you like to learn about?",
+    "tour_info": "We have many attractive tour packages:",
+    "transfer_info": "Airport and city transfer services:",
+    "vehicle_info": "Vehicle rental options:",
+    "contact_support": "Call consultant",
+    "book_now": "Book now",
+    "get_quote": "Get quote"
+  },
+  "ai": {
+    "content_generated": "Content generated successfully",
+    "generating": "Generating content...",
+    "error": "An error occurred while generating content"
+  }
+} 

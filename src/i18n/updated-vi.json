@@ -1,0 +1,49 @@
+{
+  "common": {
+    "services_list_success": "Lấy danh sách dịch vụ thành công",
+    "service_details_success": "Lấy chi tiết dịch vụ thành công",
+    "hello": "Xin chào",
+    "welcome": "Chào mừng đến với ICCautoTravel",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "submit": "Gửi",
+    "view": "Xem",
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "search": "Tìm kiếm",
+    "filter": "Lọc",
+    "sort": "Sắp xếp",
+    "loading": "Đang tải...",
+    "error": "Lỗi",
+    "success": "Thành công"
+  },
+  "services": {
+    "service_types": {
+      "car_rental": "Thuê xe",
+      "hotel_booking": "Đặt phòng khách sạn",
+      "flight_booking": "Đặt vé máy bay",
+      "tour_package": "Gói tour",
+      "visa_service": "Dịch vụ visa",
+      "transfer": "Đưa đón sân bay"
+    },
+    "vehicle": {
+      "title": "Dịch vụ Phương tiện",
+      "car": "Xe hơi",
+      "van": "Xe van",
+      "bus": "Xe buýt",
+      "luxury": "Xe sang",
+      "with_driver": "Có tài xế",
+      "self_drive": "Tự lái"
+    }
+  },
+  "blog": {
+    "list_success": "Lấy danh sách bài viết blog thành công",
+    "featured_success": "Lấy bài viết nổi bật thành công",
+    "categories": {
+      "travel": "Du lịch",
+      "food": "Ẩm thực",
+      "culture": "Văn hóa",
+      "tips": "Mẹo du lịch"
+    }
+  }
+}

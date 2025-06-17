@@ -1,0 +1,230 @@
+import { Injectable, Logger, OnModuleDestroy } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import Redis from 'ioredis';
+
+@Injectable()
+export class RedisService implements OnModuleDestroy {
+  private readonly logger = new Logger(RedisService.name);
+  private redisClient: Redis;
+
+  constructor(private configService: ConfigService) {
+    this.redisClient = this.createRedisClient();
+  }
+
+  private createRedisClient(): Redis {
+    const redisUrl = this.configService.get<string>('REDIS_URL');
+    
+    if (redisUrl) {
+      this.logger.log('Connecting to Redis using URL...');
+      return new Redis(redisUrl, {
+        enableReadyCheck: false,
+        maxRetriesPerRequest: null,
+        lazyConnect: true,
+        reconnectOnError: (err) => {
+          this.logger.error(`Redis connection error: ${err.message}`);
+          return err.message.includes('READONLY');
+        },
+      });
+    }
+
+    // Fallback to individual config parameters
+    const host = this.configService.get<string>('REDIS_HOST', 'localhost');
+    const port = this.configService.get<number>('REDIS_PORT', 6379);
+    const password = this.configService.get<string>('REDIS_PASSWORD');
+    const username = this.configService.get<string>('REDIS_USERNAME');
+
+    this.logger.log(`Connecting to Redis at ${host}:${port}...`);
+    
+    return new Redis({
+      host,
+      port,
+      password,
+      username,
+      enableReadyCheck: false,
+      maxRetriesPerRequest: null,
+      lazyConnect: true,
+      reconnectOnError: (err) => {
+        this.logger.error(`Redis connection error: ${err.message}`);
+        return err.message.includes('READONLY');
+      },
+    });
+  }
+
+  async onModuleDestroy() {
+    await this.redisClient.quit();
+  }
+
+  getClient(): Redis {
+    return this.redisClient;
+  }
+
+  async set(key: string, value: string, ttl?: number): Promise<void> {
+    try {
+      if (ttl) {
+        await this.redisClient.setex(key, ttl, value);
+      } else {
+        await this.redisClient.set(key, value);
+      }
+    } catch (error) {
+      this.logger.error(
+        `Failed to set Redis key ${key}: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
+      throw error;
+    }
+  }
+
+  async get(key: string): Promise<string | null> {
+    try {
+      return await this.redisClient.get(key);
+    } catch (error) {
+      this.logger.error(
+        `Failed to get Redis key ${key}: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
+      throw error;
+    }
+  }
+
+  async del(key: string): Promise<number> {
+    try {
+      return await this.redisClient.del(key);
+    } catch (error) {
+      this.logger.error(
+        `Failed to delete Redis key ${key}: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
+      throw error;
+    }
+  }
+
+  async exists(key: string): Promise<number> {
+    try {
+      return await this.redisClient.exists(key);
+    } catch (error) {
+      this.logger.error(
+        `Failed to check Redis key ${key}: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
+      throw error;
+    }
+  }
+
+  async setJson(key: string, value: any, ttl?: number): Promise<void> {
+    await this.set(key, JSON.stringify(value), ttl);
+  }
+
+  async getJson<T>(key: string): Promise<T | null> {
+    const value = await this.get(key);
+    return value ? JSON.parse(value) : null;
+  }
+
+  async ping(): Promise<string> {
+    try {
+      return await this.redisClient.ping();
+    } catch (error) {
+      this.logger.error(
+        `Redis ping failed: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
+      throw error;
+    }
+  }
+
+  async flush(): Promise<string> {
+    try {
+      return await this.redisClient.flushall();
+    } catch (error) {
+      this.logger.error(
+        `Redis flush failed: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
+      throw error;
+    }
+  }
+
+  async keys(pattern: string): Promise<string[]> {
+    try {
+      return await this.redisClient.keys(pattern);
+    } catch (error) {
+      this.logger.error(
+        `Failed to get Redis keys for pattern ${pattern}: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
+      throw error;
+    }
+  }
+
+  // TTS Cache specific methods
+  async setTtsCache(
+    key: string,
+    audioBuffer: Buffer,
+    ttl: number = 3600,
+  ): Promise<void> {
+    const prefix = this.configService.get<string>(
+      'REDIS_TTS_PREFIX',
+      'tts:cache:',
+    );
+    const fullKey = `${prefix}${key}`;
+    
+    try {
+      await this.redisClient.setex(fullKey, ttl, audioBuffer);
+      this.logger.debug(`TTS cache set for key: ${fullKey}`);
+    } catch (error) {
+      this.logger.error(
+        `Failed to set TTS cache for key ${fullKey}: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
+      throw error;
+    }
+  }
+
+  async getTtsCache(key: string): Promise<Buffer | null> {
+    const prefix = this.configService.get<string>(
+      'REDIS_TTS_PREFIX',
+      'tts:cache:',
+    );
+    const fullKey = `${prefix}${key}`;
+    
+    try {
+      const result = await this.redisClient.getBuffer(fullKey);
+      if (result) {
+        this.logger.debug(`TTS cache hit for key: ${fullKey}`);
+      }
+      return result;
+    } catch (error) {
+      this.logger.error(
+        `Failed to get TTS cache for key ${fullKey}: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
+      throw error;
+    }
+  }
+
+  // Health check method
+  async healthCheck(): Promise<{ status: string; latency: number }> {
+    const start = Date.now();
+    try {
+      await this.ping();
+      const latency = Date.now() - start;
+      return { status: 'healthy', latency };
+    } catch (error) {
+      const latency = Date.now() - start;
+      this.logger.error(
+        `Redis health check failed: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
+      return { status: 'unhealthy', latency };
+    }
+  }
+}

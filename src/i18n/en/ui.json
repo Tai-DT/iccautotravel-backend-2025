@@ -1,0 +1,130 @@
+{
+  "ui": {
+    "buttons": {
+      "submit": "Submit",
+      "reset": "Reset",
+      "back": "Back",
+      "next": "Next",
+      "previous": "Previous",
+      "close": "Close",
+      "open": "Open",
+      "expand": "Expand",
+      "collapse": "Collapse",
+      "refresh": "Refresh",
+      "reload": "Reload",
+      "download": "Download",
+      "upload": "Upload",
+      "print": "Print",
+      "share": "Share",
+      "copy": "Copy",
+      "cut": "Cut",
+      "paste": "Paste"
+    },
+    "forms": {
+      "required_field": "Required field",
+      "optional_field": "Optional field",
+      "choose_option": "Choose an option",
+      "select_date": "Select date",
+      "select_time": "Select time",
+      "enter_text": "Enter text",
+      "enter_number": "Enter number",
+      "enter_email": "Enter email address",
+      "enter_phone": "Enter phone number",
+      "enter_password": "Enter password",
+      "confirm_password": "Confirm password"
+    },
+    "messages": {
+      "loading": "Loading...",
+      "saving": "Saving...",
+      "saved": "Saved successfully",
+      "error_occurred": "An error occurred",
+      "try_again": "Please try again",
+      "no_results": "No results found",
+      "empty_list": "List is empty",
+      "session_expired": "Session expired",
+      "unauthorized": "Unauthorized access",
+      "forbidden": "Access forbidden"
+    },
+    "navigation": {
+      "home": "Home",
+      "dashboard": "Dashboard",
+      "profile": "Profile",
+      "settings": "Settings",
+      "help": "Help",
+      "about": "About",
+      "contact": "Contact",
+      "logout": "Logout",
+      "login": "Login",
+      "register": "Register"
+    }
+  },
+  "date_time": {
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "tomorrow": "Tomorrow",
+    "this_week": "This week",
+    "last_week": "Last week",
+    "next_week": "Next week",
+    "this_month": "This month",
+    "last_month": "Last month",
+    "next_month": "Next month",
+    "days": {
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday"
+    },
+    "months": {
+      "january": "January",
+      "february": "February",
+      "march": "March",
+      "april": "April",
+      "may": "May",
+      "june": "June",
+      "july": "July",
+      "august": "August",
+      "september": "September",
+      "october": "October",
+      "november": "November",
+      "december": "December"
+    }
+  },
+  "travel": {
+    "terms": {
+      "departure": "Departure",
+      "arrival": "Arrival",
+      "duration": "Duration",
+      "passenger": "Passenger",
+      "passengers": "Passengers",
+      "adult": "Adult",
+      "adults": "Adults",
+      "child": "Child",
+      "children": "Children",
+      "infant": "Infant",
+      "infants": "Infants",
+      "luggage": "Luggage",
+      "baggage": "Baggage",
+      "cabin_bag": "Cabin bag",
+      "checked_bag": "Checked bag"
+    },
+    "classes": {
+      "economy": "Economy",
+      "premium_economy": "Premium Economy",
+      "business": "Business",
+      "first_class": "First Class"
+    },
+    "meal_preferences": {
+      "standard": "Standard meal",
+      "vegetarian": "Vegetarian",
+      "vegan": "Vegan",
+      "halal": "Halal",
+      "kosher": "Kosher",
+      "gluten_free": "Gluten-free",
+      "diabetic": "Diabetic",
+      "no_meal": "No meal"
+    }
+  }
+}

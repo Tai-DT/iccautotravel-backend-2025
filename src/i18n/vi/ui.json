@@ -1,0 +1,130 @@
+{
+  "ui": {
+    "buttons": {
+      "submit": "Gửi",
+      "reset": "Đặt lại",
+      "back": "Quay lại",
+      "next": "Tiếp theo",
+      "previous": "Trước",
+      "close": "Đóng",
+      "open": "Mở",
+      "expand": "Mở rộng",
+      "collapse": "Thu gọn",
+      "refresh": "Làm mới",
+      "reload": "Tải lại",
+      "download": "Tải xuống",
+      "upload": "Tải lên",
+      "print": "In",
+      "share": "Chia sẻ",
+      "copy": "Sao chép",
+      "cut": "Cắt",
+      "paste": "Dán"
+    },
+    "forms": {
+      "required_field": "Trường bắt buộc",
+      "optional_field": "Trường tùy chọn",
+      "choose_option": "Chọn một tùy chọn",
+      "select_date": "Chọn ngày",
+      "select_time": "Chọn giờ",
+      "enter_text": "Nhập văn bản",
+      "enter_number": "Nhập số",
+      "enter_email": "Nhập địa chỉ email",
+      "enter_phone": "Nhập số điện thoại",
+      "enter_password": "Nhập mật khẩu",
+      "confirm_password": "Xác nhận mật khẩu"
+    },
+    "messages": {
+      "loading": "Đang tải...",
+      "saving": "Đang lưu...",
+      "saved": "Đã lưu thành công",
+      "error_occurred": "Đã xảy ra lỗi",
+      "try_again": "Vui lòng thử lại",
+      "no_results": "Không tìm thấy kết quả",
+      "empty_list": "Danh sách trống",
+      "session_expired": "Phiên đã hết hạn",
+      "unauthorized": "Truy cập không được phép",
+      "forbidden": "Truy cập bị cấm"
+    },
+    "navigation": {
+      "home": "Trang chủ",
+      "dashboard": "Bảng điều khiển",
+      "profile": "Hồ sơ",
+      "settings": "Cài đặt",
+      "help": "Trợ giúp",
+      "about": "Giới thiệu",
+      "contact": "Liên hệ",
+      "logout": "Đăng xuất",
+      "login": "Đăng nhập",
+      "register": "Đăng ký"
+    }
+  },
+  "date_time": {
+    "today": "Hôm nay",
+    "yesterday": "Hôm qua",
+    "tomorrow": "Ngày mai",
+    "this_week": "Tuần này",
+    "last_week": "Tuần trước",
+    "next_week": "Tuần sau",
+    "this_month": "Tháng này",
+    "last_month": "Tháng trước",
+    "next_month": "Tháng sau",
+    "days": {
+      "monday": "Thứ Hai",
+      "tuesday": "Thứ Ba",
+      "wednesday": "Thứ Tư",
+      "thursday": "Thứ Năm",
+      "friday": "Thứ Sáu",
+      "saturday": "Thứ Bảy",
+      "sunday": "Chủ Nhật"
+    },
+    "months": {
+      "january": "Tháng Một",
+      "february": "Tháng Hai",
+      "march": "Tháng Ba",
+      "april": "Tháng Tư",
+      "may": "Tháng Năm",
+      "june": "Tháng Sáu",
+      "july": "Tháng Bảy",
+      "august": "Tháng Tám",
+      "september": "Tháng Chín",
+      "october": "Tháng Mười",
+      "november": "Tháng Mười Một",
+      "december": "Tháng Mười Hai"
+    }
+  },
+  "travel": {
+    "terms": {
+      "departure": "Khởi hành",
+      "arrival": "Đến nơi",
+      "duration": "Thời gian",
+      "passenger": "Hành khách",
+      "passengers": "Hành khách",
+      "adult": "Người lớn",
+      "adults": "Người lớn",
+      "child": "Trẻ em",
+      "children": "Trẻ em",
+      "infant": "Em bé",
+      "infants": "Em bé",
+      "luggage": "Hành lý",
+      "baggage": "Hành lý",
+      "cabin_bag": "Hành lý xách tay",
+      "checked_bag": "Hành lý ký gửi"
+    },
+    "classes": {
+      "economy": "Phổ thông",
+      "premium_economy": "Phổ thông cao cấp",
+      "business": "Thương gia",
+      "first_class": "Hạng nhất"
+    },
+    "meal_preferences": {
+      "standard": "Suất ăn tiêu chuẩn",
+      "vegetarian": "Chay",
+      "vegan": "Thuần chay",
+      "halal": "Halal",
+      "kosher": "Kosher",
+      "gluten_free": "Không gluten",
+      "diabetic": "Tiểu đường",
+      "no_meal": "Không ăn"
+    }
+  }
+}

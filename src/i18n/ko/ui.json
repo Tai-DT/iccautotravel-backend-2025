@@ -1,0 +1,130 @@
+{
+  "ui": {
+    "buttons": {
+      "submit": "제출",
+      "reset": "재설정",
+      "back": "뒤로",
+      "next": "다음",
+      "previous": "이전",
+      "close": "닫기",
+      "open": "열기",
+      "expand": "확장",
+      "collapse": "축소",
+      "refresh": "새로고침",
+      "reload": "다시 로드",
+      "download": "다운로드",
+      "upload": "업로드",
+      "print": "인쇄",
+      "share": "공유",
+      "copy": "복사",
+      "cut": "잘라내기",
+      "paste": "붙여넣기"
+    },
+    "forms": {
+      "required_field": "필수 필드",
+      "optional_field": "선택 필드",
+      "choose_option": "옵션 선택",
+      "select_date": "날짜 선택",
+      "select_time": "시간 선택",
+      "enter_text": "텍스트 입력",
+      "enter_number": "숫자 입력",
+      "enter_email": "이메일 주소 입력",
+      "enter_phone": "전화번호 입력",
+      "enter_password": "비밀번호 입력",
+      "confirm_password": "비밀번호 확인"
+    },
+    "messages": {
+      "loading": "로딩 중...",
+      "saving": "저장 중...",
+      "saved": "저장 완료",
+      "error_occurred": "오류가 발생했습니다",
+      "try_again": "다시 시도해 주세요",
+      "no_results": "결과를 찾을 수 없습니다",
+      "empty_list": "목록이 비어있습니다",
+      "session_expired": "세션이 만료되었습니다",
+      "unauthorized": "권한이 없습니다",
+      "forbidden": "접근이 금지되었습니다"
+    },
+    "navigation": {
+      "home": "홈",
+      "dashboard": "대시보드",
+      "profile": "프로필",
+      "settings": "설정",
+      "help": "도움말",
+      "about": "소개",
+      "contact": "연락처",
+      "logout": "로그아웃",
+      "login": "로그인",
+      "register": "회원가입"
+    }
+  },
+  "date_time": {
+    "today": "오늘",
+    "yesterday": "어제",
+    "tomorrow": "내일",
+    "this_week": "이번 주",
+    "last_week": "지난 주",
+    "next_week": "다음 주",
+    "this_month": "이번 달",
+    "last_month": "지난 달",
+    "next_month": "다음 달",
+    "days": {
+      "monday": "월요일",
+      "tuesday": "화요일",
+      "wednesday": "수요일",
+      "thursday": "목요일",
+      "friday": "금요일",
+      "saturday": "토요일",
+      "sunday": "일요일"
+    },
+    "months": {
+      "january": "1월",
+      "february": "2월",
+      "march": "3월",
+      "april": "4월",
+      "may": "5월",
+      "june": "6월",
+      "july": "7월",
+      "august": "8월",
+      "september": "9월",
+      "october": "10월",
+      "november": "11월",
+      "december": "12월"
+    }
+  },
+  "travel": {
+    "terms": {
+      "departure": "출발",
+      "arrival": "도착",
+      "duration": "소요 시간",
+      "passenger": "승객",
+      "passengers": "승객들",
+      "adult": "성인",
+      "adults": "성인들",
+      "child": "어린이",
+      "children": "어린이들",
+      "infant": "유아",
+      "infants": "유아들",
+      "luggage": "수하물",
+      "baggage": "수하물",
+      "cabin_bag": "기내 수하물",
+      "checked_bag": "위탁 수하물"
+    },
+    "classes": {
+      "economy": "이코노미",
+      "premium_economy": "프리미엄 이코노미",
+      "business": "비즈니스",
+      "first_class": "퍼스트 클래스"
+    },
+    "meal_preferences": {
+      "standard": "일반 식사",
+      "vegetarian": "채식",
+      "vegan": "비건",
+      "halal": "할랄",
+      "kosher": "코셔",
+      "gluten_free": "글루텐 프리",
+      "diabetic": "당뇨식",
+      "no_meal": "식사 없음"
+    }
+  }
+}

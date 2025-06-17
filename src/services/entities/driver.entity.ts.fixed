@@ -1,0 +1,83 @@
+import { ObjectType, Field, ID, Float } from '@nestjs/graphql';
+
+// Define an interface for the Driver model properties
+interface DriverModel {
+  id: string;
+  fullName: string;
+  phone: string;
+  email: string | null;
+  licenseNumber: string;
+  licenseExpiry: Date;
+  experienceYears: number;
+  speaksEnglish: boolean;
+  speaksVietnamese: boolean;
+  rating: number | null;
+  isActive: boolean;
+  notes: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+@ObjectType()
+export class DriverEntity {
+  @Field(() => ID)
+  id!: string;
+
+  @Field()
+  fullName!: string;
+
+  @Field()
+  phone!: string;
+
+  @Field({ nullable: true })
+  email?: string;
+
+  @Field()
+  licenseNumber!: string;
+
+  @Field(() => Date)
+  licenseExpiry!: Date;
+
+  @Field(() => Float)
+  experienceYears!: number;
+
+  @Field(() => Boolean)
+  speaksEnglish!: boolean;
+
+  @Field(() => Boolean)
+  speaksVietnamese!: boolean;
+
+  @Field(() => Float, { nullable: true })
+  rating?: number;
+
+  @Field(() => Boolean)
+  isActive!: boolean;
+
+  @Field({ nullable: true })
+  notes?: string;
+
+  @Field(() => Date)
+  createdAt!: Date;
+
+  @Field(() => Date)
+  updatedAt!: Date;
+
+  static fromPrisma(driver: DriverModel): DriverEntity {
+    const entity = new DriverEntity();
+    entity.id = driver.id;
+    entity.fullName = driver.fullName;
+    entity.phone = driver.phone;
+    entity.email = driver.email ?? undefined;
+    entity.licenseNumber = driver.licenseNumber;
+    entity.licenseExpiry = driver.licenseExpiry;
+    entity.experienceYears = driver.experienceYears;
+    entity.speaksEnglish = driver.speaksEnglish;
+    entity.speaksVietnamese = driver.speaksVietnamese;
+    entity.rating = driver.rating ? Number(driver.rating) : undefined;
+    entity.isActive = driver.isActive;
+    entity.notes = driver.notes ?? undefined;
+    entity.createdAt = driver.createdAt;
+    entity.updatedAt = driver.updatedAt;
+    return entity;
+  }
+}
